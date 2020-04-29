@@ -1,6 +1,6 @@
 #define _GNU_SOURCE
 #include "list.h" 
-#include "_sched.h"
+#include "my_sched.h"
 
 // 1->FIFO, 2->RR
 int POLICY[2] = {1, 2};
@@ -275,14 +275,14 @@ int main(){
 
 		if(!pid){
 			mypid = getpid();
-			syscall(336, 1, mypid, &start);
+			syscall(350, 1, mypid, &start);
 			printf("%s %d\n", P[R_index[i]], getpid());
 			
 			for(unsigned long _i = 0; _i < T[T_inverse[R_index[i]]]; ++_i){
 				wait_unit_1;
 			}
 	
-			syscall(336, 0, mypid, &start);
+			syscall(350, 0, mypid, &start);
 			exit(0);
 		}
 		else if(pid == -1){

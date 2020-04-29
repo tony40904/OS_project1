@@ -1,7 +1,7 @@
 CC      = gcc
 CFLAGS  = -Wall -pthread -std=gnu99
 
-OBJECT  = _sched.o
+OBJECT  = my_sched.o
 
 EXEC    = main.out
 
@@ -10,11 +10,9 @@ default : $(EXEC)
 $(EXEC) : $(OBJECT) 
 	$(CC) $(CFLAGS) -o $(EXEC) $(OBJECT)
 
-_sched.o : _sched.c _sched.h list.h
+my_sched.o : my_sched.c my_sched.h list.h
 
-	$(CC) $(CFLAGS) -c _sched.c -o _sched.o
+	$(CC) $(CFLAGS) -c my_sched.c -o my_sched.o
 
 clean :
 	$(RM) $(EXEC) *.o *.out
-try :
-	sudo ./$(EXEC) < FIFO_test.txt
